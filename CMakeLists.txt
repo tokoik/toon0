@@ -68,7 +68,7 @@ if(APPLE)
 elseif(WIN32)
 
     # Windows (Visual Studio) の設定
-    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCE_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
     # freeglut のソースを取得してビルドする
     include(FetchContent)
@@ -117,7 +117,7 @@ elseif(WIN32)
 else()
 
     # Ubuntu Linux (その他UNIX系) の設定
-    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCE_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
     # OpenGL と GLUT を探す
     find_package(OpenGL REQUIRED)
