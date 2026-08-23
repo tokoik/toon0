@@ -1,4 +1,4 @@
-/*
+﻿/*
 ** 簡易トラックボール処理
 */
 extern void trackballInit(void);
