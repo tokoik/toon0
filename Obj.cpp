@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <cstdio>
 #include <cmath>
 
@@ -99,7 +100,7 @@ Obj &Obj::operator=(const Obj &o)
 /*
 ** ファイルの読み込み
 */
-int Obj::load(char *name)
+int Obj::load(const char *name)
 {
   std::ifstream file(name, std::ios::in | std::ios::binary);
   char buf[1024];

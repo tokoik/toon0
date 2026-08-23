@@ -16,7 +16,7 @@ public:
   Obj(const Obj &);
   virtual ~Obj();
   Obj &operator=(const Obj &);
-  int load(char *);
+  int load(const char *);
   void calcTexCoord(const GLfloat *, const GLfloat *);
   void draw(void);
 };
