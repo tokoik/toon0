@@ -1,4 +1,5 @@
-﻿#ifndef OBJ_H
+﻿//
+#ifndef OBJ_H
 #define OBJ_H
 
 typedef float vec[3];

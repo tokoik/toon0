@@ -1,16 +1,20 @@
-﻿#include <cstdio>
-#include <cstdlib>
-#include <cmath>
-
-#if defined(WIN32)
-//#  pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
-#  include "glut.h"
+﻿#if defined(_WIN32)
+#  define _USE_MATH_DEFINES
+#  define _CRT_SECURE_NO_WARNINGS
+#  include <GL/glut.h>
 #  include "glext.h"
 #elif defined(__APPLE__) || defined(MACOSX)
+#  define GL_SILENCE_DEPRECATION
 #  include <GLUT/glut.h>
+#  include <GL/glext.h>
 #else
+#  define GL_GLEXT_PROTOTYPES
 #  include <GL/glut.h>
+#  include <GL/glext.h>
 #endif
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
 
 /*
 ** トラックボール処理用関数の宣言
@@ -77,7 +81,7 @@ static void init(void)
   glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
   /* 初期設定 */
-  glClearColor(0.3, 0.3, 1.0, 1.0);
+  glClearColor(0.3f, 0.3f, 1.0f, 1.0f);
   glEnable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
   
@@ -112,7 +116,7 @@ void scene(void)
   for (i = 0; i < 4; ++i) {
     lpos[i] = 0.0;
     for (j = 0; j < 4; ++j) {
-      lpos[i] += lightpos[j] * rt[i * 4 + j];
+      lpos[i] += (GLfloat)(lightpos[j] * rt[i * 4 + j]);
     }
   }
 
@@ -122,7 +126,7 @@ void scene(void)
   for (i = 0; i < 4; ++i) {
     epos[i] = 0.0;
     for (j = 0; j < 4; ++j) {
-      epos[i] += eyepos[j] * rt[i * 4 + j];
+      epos[i] += (GLfloat)(eyepos[j] * rt[i * 4 + j]);
     }
   }
 

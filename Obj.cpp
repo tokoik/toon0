@@ -1,16 +1,22 @@
-﻿#include <iostream>
+﻿#if defined(_WIN32)
+#  define _USE_MATH_DEFINES
+#  define _CRT_SECURE_NO_WARNINGS
+#  include <GL/glut.h>
+#  include "glext.h"
+#elif defined(__APPLE__) || defined(MACOSX)
+#  define GL_SILENCE_DEPRECATION
+#  include <GLUT/glut.h>
+#  include <GL/glext.h>
+#else
+#  define GL_GLEXT_PROTOTYPES
+#  include <GL/glut.h>
+#  include <GL/glext.h>
+#endif
+#include <iostream>
 #include <fstream>
 #include <cstring>
 #include <cstdio>
 #include <cmath>
-
-#if defined(WIN32)
-#  include "glut.h"
-#elif defined(__APPLE__) || defined(MACOSX)
-#  include <GLUT/glut.h>
-#else
-#  include <GL/glut.h>
-#endif
 
 #include "Obj.h"
 
